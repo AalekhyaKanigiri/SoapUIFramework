@@ -1,0 +1,51 @@
+Status: OK
+Time Taken: 669
+Size: 413
+Timestamp: Thu Sep 09 20:07:32 AEST 2021
+TestStep: getBank - Request 1
+
+----------------- Messages ------------------------------
+
+----------------- Properties ------------------------------
+Endpoint: http://www.thomas-bayer.com/axis2/services/BLZService
+Encoding: UTF-8
+
+---------------- Request ---------------------------
+Request Headers: SOAPAction : ""
+Connection : Keep-Alive
+User-Agent : Apache-HttpClient/4.5.5 (Java/12.0.1)
+Host : www.thomas-bayer.com
+Accept-Encoding : gzip,deflate
+Content-Length : 280
+Content-Type : text/xml;charset=UTF-8
+
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>20020200</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+---------------- Response --------------------------
+Response Headers: Server : Apache-Coyote/1.1
+#status# : HTTP/1.1 200 OK
+Content-Length : 413
+Date : Thu, 09 Sep 2021 10:07:34 GMT
+Content-Type : text/xml;charset=UTF-8
+
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <ns1:getBankResponse xmlns:ns1="http://thomas-bayer.com/blz/">
+         <ns1:details>
+            <ns1:bezeichnung>SEB Merchant Bank Hamburg</ns1:bezeichnung>
+            <ns1:bic>ESSEDEFFHAM</ns1:bic>
+            <ns1:ort>Hamburg</ns1:ort>
+            <ns1:plz>20010</ns1:plz>
+         </ns1:details>
+      </ns1:getBankResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
