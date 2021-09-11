@@ -1,0 +1,22 @@
+<project name="GenerateTestReport" default="GenerateJunitReport" basedir=".">
+        <description>
+                Generate the HTML report from JUnit XML files
+        </description>
+
+        <property name="genReportDir" location="${basedir}/../Results/HTMLReport"/>
+        <property name="reportXML" location="../Results"/>
+        <property name="soapUIInstallPath" location="C:\Program Files\SmartBear\SoapUI-5.6.0\bin\testrunner.bat"/>
+        
+
+       
+
+        <target name="GenerateJunitReport">
+                <mkdir dir="${genReportDir}"/>
+                <junitreport todir="${genReportDir}">
+                        <fileset dir="${basedir}/../Results">
+                                <include name="**/TEST-*.xml"/>
+                        </fileset>
+                        <report format="frames" todir="${genReportDir}"/>
+                </junitreport>
+        </target>
+</project>

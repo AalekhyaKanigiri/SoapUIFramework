@@ -26,3 +26,4 @@ hs_err_pid*
 # ignore results files
 Results/*.txt
 Results/*.xml
+Results/*
