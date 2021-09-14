@@ -13,3 +13,7 @@ Steps to run the framework
 1. Open Commaand Prompt
 2. Go to Report Generation Folder
 3. Run Ant
+
+Sample Report that would be generate will look like this 
+
+![Alt text](https://sourceforge.net/dbimage.php?id=207612 "Test History Report - SOAP UI")
