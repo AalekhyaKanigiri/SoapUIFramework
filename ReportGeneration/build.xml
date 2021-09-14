@@ -1,15 +1,20 @@
-<project name="GenerateTestReport" default="GenerateJunitReport" basedir=".">
+<project name="GenerateTestReport" default="all" basedir=".">
         <description>
                 Generate the HTML report from JUnit XML files
         </description>
 
+        <property environment="env"/>
+        <property name="reportStorage" location="${basedir}/../Results/TestHistory"/>
+        <property name="soapUIInstallPath" location="C:\&quot;Program Files&quot;\SmartBear\SoapUI-5.6.0\bin\testrunner.bat"/>
         <property name="genReportDir" location="${basedir}/../Results/HTMLReport"/>
         <property name="reportXML" location="../Results"/>
-        <property name="soapUIInstallPath" location="C:\Program Files\SmartBear\SoapUI-5.6.0\bin\testrunner.bat"/>
         
-
+        <target name="RunSoapUITests" description="Launch SOAP UI test runner and executes specified tests">
+                <exec executable="cmd.exe">
+                        <arg line="/c ${soapUIInstallPath} -r -a -j -f'../Results/HTMLReport' '../SOAPUIProject/BLZcodes-soapui-project.xml'"/>
+                </exec>
+        </target>
        
-
         <target name="GenerateJunitReport">
                 <mkdir dir="${genReportDir}"/>
                 <junitreport todir="${genReportDir}">
@@ -19,4 +24,21 @@
                         <report format="frames" todir="${genReportDir}"/>
                 </junitreport>
         </target>
+
+        <target name="StoreJunitReport" description="Saves away the generated JUnit test report.">
+                <tstamp>
+                        <format property="start.timestamp" pattern="yyyyMMdd-HHmmss" />
+                </tstamp>
+                <copy todir="${reportStorage}/report-${start.timestamp}">
+                        <fileset dir="${genReportDir}" />
+                </copy>
+        </target>
+
+        <target name="GenerateHistory" description="Generates a test history from existing Unit-reports.">
+                <exec executable="cmd.exe">
+                        <arg line="/c 'java -jar unitth.jar ../Results/TestHistory/report-*'" />
+                </exec>
+        </target>
+
+        <target name="all" depends="RunSoapUITests, GenerateJunitReport, StoreJunitReport, GenerateHistory"/>
 </project>

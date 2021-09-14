@@ -7,8 +7,8 @@
   <con:entry key="Save After" value="false"/>
   <con:entry key="Add Settings" value="false"/>
   <con:entry key="WSS Password Type" value=""/>
-  <con:entry key="TestSuite" value="CreateUserGorest"/>
-  <con:entry key="Endpoint" value="https://gorest.co.in"/>
+  <con:entry key="TestSuite" value="CreateUserDummyapi"/>
+  <con:entry key="Endpoint" value="http://dummy.restapiexample.com"/>
   <con:entry key="Select Report Type" value=""/>
   <con:entry key="System Properties" value=""/>
   <con:entry key="Password" value=""/>
