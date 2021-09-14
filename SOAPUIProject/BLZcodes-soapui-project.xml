@@ -8,7 +8,7 @@
   <con:entry key="Add Settings" value="false"/>
   <con:entry key="WSS Password Type" value=""/>
   <con:entry key="TestSuite" value="CheckBLZcodes"/>
-  <con:entry key="Endpoint" value="http://www.dev-thomas-bayer.com/axis2/services/BLZService"/>
+  <con:entry key="Endpoint" value="http://www.thomas-bayer.com/axis2/services/BLZService"/>
   <con:entry key="Select Report Type" value=""/>
   <con:entry key="System Properties" value=""/>
   <con:entry key="Password" value=""/>
