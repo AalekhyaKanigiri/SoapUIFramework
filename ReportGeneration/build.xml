@@ -11,7 +11,7 @@
         
         <target name="RunSoapUITests" description="Launch SOAP UI test runner and executes specified tests">
                 <exec executable="cmd.exe">
-                        <arg line="/c ${soapUIInstallPath} -r -a -j -f'../Results/HTMLReport' '../SOAPUIProject/BLZcodes-soapui-project.xml'"/>
+                        <arg line="/c ${soapUIInstallPath} -r -a -j -f'../Results/HTMLReport' '../SOAPUIProject/DummyREST-Project-soapui-project.xml'"/>
                 </exec>
         </target>
        
@@ -34,10 +34,22 @@
                 </copy>
         </target>
 
-        <target name="GenerateHistory" description="Generates a test history from existing Unit-reports.">
+        <!-- <target name="GenerateHistory" description="Generates a test history from existing Unit-reports.">
                 <exec executable="cmd.exe">
                         <arg line="/c 'java -jar unitth.jar ../Results/TestHistory/report-*'" />
                 </exec>
+        </target> -->
+
+        <target name="GenerateHistory" description="Generates a test history from existing Unit-reports.">
+          <java jar="unitth.jar" fork="true" failonerror="true" maxmemory="128m">
+          
+            <sysproperty key="unitth.html.report.path" value="."/>
+            <sysproperty key="unitth.report.dir" value="../Results/TestHistory"/>
+            <sysproperty key="unitth.generate.exectimegraphs" value="true"/>
+            <sysproperty key="unitth.xml.report.filter" value="TEST-"/>
+          
+            <arg value="${reportStorage}/report-*" />
+          </java>
         </target>
 
         <target name="all" depends="RunSoapUITests, GenerateJunitReport, StoreJunitReport, GenerateHistory"/>
