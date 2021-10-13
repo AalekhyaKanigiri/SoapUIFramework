@@ -11,7 +11,7 @@
         
         <target name="RunSoapUITests" description="Launch SOAP UI test runner and executes specified tests">
                 <exec executable="cmd.exe">
-                        <arg line="/c ${soapUIInstallPath} -r -a -j -f'../Results/HTMLReport' '../SOAPUIProject/DummyREST-Project-soapui-project.xml'"/>
+                        <arg line="/c ${soapUIInstallPath} -r -a -j -f'../Results/HTMLReport' '../SOAPUIProject/JsonPlaceHolder-soapui-project.xml'"/>
                 </exec>
         </target>
        
@@ -34,11 +34,6 @@
                 </copy>
         </target>
 
-        <!-- <target name="GenerateHistory" description="Generates a test history from existing Unit-reports.">
-                <exec executable="cmd.exe">
-                        <arg line="/c 'java -jar unitth.jar ../Results/TestHistory/report-*'" />
-                </exec>
-        </target> -->
 
         <target name="GenerateHistory" description="Generates a test history from existing Unit-reports.">
           <java jar="unitth.jar" fork="true" failonerror="true" maxmemory="128m">
